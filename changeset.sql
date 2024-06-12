@@ -7,3 +7,13 @@ CREATE TABLE test_table (
 );
 
 --rollback DROP TABLE test_table;
+
+--changeset public:2
+INSERT INTO test_table (name) VALUES ('test');
+
+--rollback DELETE FROM test_table WHERE name = 'test';
+
+--changeset public:3
+ALTER TABLE test_table ADD COLUMN age INT;
+
+--rollback ALTER TABLE test_table DROP COLUMN age;
