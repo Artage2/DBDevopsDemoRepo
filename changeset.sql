@@ -17,3 +17,13 @@ INSERT INTO test_table (name) VALUES ('test');
 ALTER TABLE test_table ADD COLUMN age INT;
 
 --rollback ALTER TABLE test_table DROP COLUMN age;
+
+--changeset arturas:2
+CREATE TABLE person (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    address1 VARCHAR(50),
+    address2 VARCHAR(50),
+    city VARCHAR(30)
+);
+--rollback DROP TABLE person;
